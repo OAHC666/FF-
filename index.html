@@ -2,17 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>ÎÒµÄ 3D Ä£ĞÍÑİÊ¾£¨³õÑ§Õß°æ£©</title>
+    <title>æˆ‘çš„ 3D æ¨¡å‹æ¼”ç¤ºï¼ˆåˆå­¦è€…ç‰ˆï¼‰</title>
 
-    <!-- 1. ÒıÈë A-Frame ¿â£ºÕâÊÇÒ»¸ö×¨ÃÅÓÃÀ´×öÍøÒ³ 3D ³¡¾°µÄ JavaScript ¿ò¼Ü -->
+    <!-- 1. å¼•å…¥ A-Frame åº“ï¼šè¿™æ˜¯ä¸€ä¸ªä¸“é—¨ç”¨æ¥åšç½‘é¡µ 3D åœºæ™¯çš„ JavaScript æ¡†æ¶ -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
     <style>
       /* 
-        2. Ò³Ãæ»ù´¡ÑùÊ½ 
-        - margin: 0      Çå³ıä¯ÀÀÆ÷Ä¬ÈÏµÄÒ³Ãæ±ß¾à
-        - overflow: hidden ·ÀÖ¹³öÏÖ¹ö¶¯Ìõ
-        - background-color: #000  ½«Õû¸öÒ³Ãæ±³¾°ÉèÎª´¿ºÚ
+        2. é¡µé¢åŸºç¡€æ ·å¼ 
+        - margin: 0      æ¸…é™¤æµè§ˆå™¨é»˜è®¤çš„é¡µé¢è¾¹è·
+        - overflow: hidden é˜²æ­¢å‡ºç°æ»šåŠ¨æ¡
+        - background-color: #000  å°†æ•´ä¸ªé¡µé¢èƒŒæ™¯è®¾ä¸ºçº¯é»‘
       */
       body {
         margin: 0;
@@ -21,11 +21,11 @@
       }
 
       /* 
-        3. a-scene ÑùÊ½ 
-        - position: fixed   ¹Ì¶¨ÔÚÒ³Ãæ×îµ×²ã
-        - top/left: 0       ½ôÌùä¯ÀÀÆ÷´°¿Ú×óÉÏ½Ç
-        - width/height:100% Õ¼ÂúÕû¸ö´°¿Ú
-        - z-index: -1       ·Åµ½ËùÓĞÄÚÈİµÄÏÂÃæ£¬³äµ±±³¾°
+        3. a-scene æ ·å¼ 
+        - position: fixed   å›ºå®šåœ¨é¡µé¢æœ€åº•å±‚
+        - top/left: 0       ç´§è´´æµè§ˆå™¨çª—å£å·¦ä¸Šè§’
+        - width/height:100% å æ»¡æ•´ä¸ªçª—å£
+        - z-index: -1       æ”¾åˆ°æ‰€æœ‰å†…å®¹çš„ä¸‹é¢ï¼Œå……å½“èƒŒæ™¯
       */
       a-scene {
         position: fixed;
@@ -40,19 +40,19 @@
 
   <body>
     <!--
-      4. A-Frame ³¡¾°¿ªÊ¼
-      - embedded: ÈÃ³¡¾°¿ÉÒÔÇ¶Èëµ½ÒÑÓĞµÄ HTML ²¼¾ÖÖĞ
-      - background: ÉèÖÃ WebGL Çå³ıÉ«ÎªºÚÉ«
+      4. A-Frame åœºæ™¯å¼€å§‹
+      - embedded: è®©åœºæ™¯å¯ä»¥åµŒå…¥åˆ°å·²æœ‰çš„ HTML å¸ƒå±€ä¸­
+      - background: è®¾ç½® WebGL æ¸…é™¤è‰²ä¸ºé»‘è‰²
     -->
     <a-scene embedded background="color: #000000">
 
       <!-- 
-        5. <a-assets> ÓÃÓÚÔ¤¼ÓÔØÍâ²¿×ÊÔ´£¬ÍÆ¼öÔ¤ÏÈ¼ÓÔØÄ£ĞÍÌá¸ßÌåÑé
+        5. <a-assets> ç”¨äºé¢„åŠ è½½å¤–éƒ¨èµ„æºï¼Œæ¨èé¢„å…ˆåŠ è½½æ¨¡å‹æé«˜ä½“éªŒ
       -->
       <a-assets>
         <!-- 
-          - id="myModel": ÓÃÀ´ÔÚ³¡¾°ÖĞÒıÓÃÕâ·İ×ÊÔ´ 
-          - src="ÎÄ¼şÃû.glb": ÎÄ¼şÃûÒªºÍÄã·ÅÔÚÍ¬Ä¿Â¼ÏÂµÄ .glb ÍêÈ«Ò»ÖÂ
+          - id="myModel": ç”¨æ¥åœ¨åœºæ™¯ä¸­å¼•ç”¨è¿™ä»½èµ„æº 
+          - src="æ–‡ä»¶å.glb": æ–‡ä»¶åè¦å’Œä½ æ”¾åœ¨åŒç›®å½•ä¸‹çš„ .glb å®Œå…¨ä¸€è‡´
         -->
         <a-asset-item
           id="myModel"
@@ -61,29 +61,29 @@
       </a-assets>
 
       <!-- 
-        6. Ìí¼Ó¹âÔ´ 
-        - ambient: »·¾³¹â£¬¸øÕû¸ö³¡¾°Ò»¸ö»ù´¡ÁÁ¶È
-        - directional: ¶¨Ïò¹â£¬ºÃ±ÈÌ«Ñô¹â£¬ÓĞ·½Ïò¸Ğ£¬ÔöÇ¿ÒõÓ°Ğ§¹û
+        6. æ·»åŠ å…‰æº 
+        - ambient: ç¯å¢ƒå…‰ï¼Œç»™æ•´ä¸ªåœºæ™¯ä¸€ä¸ªåŸºç¡€äº®åº¦
+        - directional: å®šå‘å…‰ï¼Œå¥½æ¯”å¤ªé˜³å…‰ï¼Œæœ‰æ–¹å‘æ„Ÿï¼Œå¢å¼ºé˜´å½±æ•ˆæœ
       -->
       <a-entity light="type: ambient; intensity: 1.0"></a-entity>
       <a-entity light="type: directional; intensity: 0.8" position="1 2 1"></a-entity>
 
       <!--
-        7. °Ñ 3D Ä£ĞÍ·Åµ½³¡¾°Àï£¬²¢Ìí¼ÓÉÏÏÂÍù·µ¶¯»­£º
-        - gltf-model="#myModel": ÒıÓÃÉÏÃæÔ¤¼ÓÔØµÄÄ£ĞÍ
-        - position="x y z": Ä£ĞÍÔÚ 3D ¿Õ¼äÖĞµÄ³õÊ¼Î»ÖÃ
-        - scale="2 2 2": Ä£ĞÍËõ·Å±ÈÀı£¬°´ÕÕĞèÒªµ÷Õû´óĞ¡
-        - animation: A-Frame ÄÚÖÃ×é¼ş£¬ÓÃÀ´´´½¨ÊôĞÔ¶¯»­
-          * property: Òª¶¯»­µÄÊôĞÔ£¨ÕâÀïÊÇ position£©
-          * to: ¶¯»­Ä¿±êÖµ£¨x y z£©
-          * dur: ¶¯»­Ê±³¤£¬µ¥Î»ºÁÃë
-          * dir: alternate ±íÊ¾Íù·µÔË¶¯
-          * loop: true ÎŞÏŞÑ­»·
+        7. æŠŠ 3D æ¨¡å‹æ”¾åˆ°åœºæ™¯é‡Œï¼Œå¹¶æ·»åŠ ä¸Šä¸‹å¾€è¿”åŠ¨ç”»ï¼š
+        - gltf-model="#myModel": å¼•ç”¨ä¸Šé¢é¢„åŠ è½½çš„æ¨¡å‹
+        - position="x y z": æ¨¡å‹åœ¨ 3D ç©ºé—´ä¸­çš„åˆå§‹ä½ç½®
+        - scale="2 2 2": æ¨¡å‹ç¼©æ”¾æ¯”ä¾‹ï¼ŒæŒ‰ç…§éœ€è¦è°ƒæ•´å¤§å°
+        - animation: A-Frame å†…ç½®ç»„ä»¶ï¼Œç”¨æ¥åˆ›å»ºå±æ€§åŠ¨ç”»
+          * property: è¦åŠ¨ç”»çš„å±æ€§ï¼ˆè¿™é‡Œæ˜¯ positionï¼‰
+          * to: åŠ¨ç”»ç›®æ ‡å€¼ï¼ˆx y zï¼‰
+          * dur: åŠ¨ç”»æ—¶é•¿ï¼Œå•ä½æ¯«ç§’
+          * dir: alternate è¡¨ç¤ºå¾€è¿”è¿åŠ¨
+          * loop: true æ— é™å¾ªç¯
       -->
       <a-entity
         gltf-model="#myModel"
         position="0 1.5 -5"
-        scale="1 1 1"
+        scale="3 3 3"
         animation="
           property: position;
           to: 0 2.5 -5;
@@ -94,35 +94,35 @@
       </a-entity>
 
       <!--
-        8. ÉãÏñ»úÖ§¼Ü£¨cameraRig£©£º
-        - ÎÒÃÇ°ÑÏà»ú¹ÒÔÚÕâ¸ö¿ÕÊµÌåÉÏ£¬Í¨¹ıµ÷ÕûËüµÄ rotation À´¿ØÖÆÊÓ½Ç
+        8. æ‘„åƒæœºæ”¯æ¶ï¼ˆcameraRigï¼‰ï¼š
+        - æˆ‘ä»¬æŠŠç›¸æœºæŒ‚åœ¨è¿™ä¸ªç©ºå®ä½“ä¸Šï¼Œé€šè¿‡è°ƒæ•´å®ƒçš„ rotation æ¥æ§åˆ¶è§†è§’
       -->
-      <a-entity id="cameraRig" position="0 1.6 3">
-        <!-- ÕæÕıµÄÉãÏñ»ú -->
+      <a-entity id="cameraRig" position="0 1.6 5">
+        <!-- çœŸæ­£çš„æ‘„åƒæœº -->
         <a-entity camera></a-entity>
       </a-entity>
 
     </a-scene>
-    <!-- A-Frame ³¡¾°½áÊø -->
+    <!-- A-Frame åœºæ™¯ç»“æŸ -->
 
     <!--
-      9. JavaScript£º¼àÌıÊó±êÒÆ¶¯£¬ÈÃÉãÏñ»ú°´ÕÕÊó±êÎ»ÖÃ¡°Ò¡°Ú¡±
+      9. JavaScriptï¼šç›‘å¬é¼ æ ‡ç§»åŠ¨ï¼Œè®©æ‘„åƒæœºæŒ‰ç…§é¼ æ ‡ä½ç½®â€œæ‘‡æ‘†â€
     -->
     <script>
-      // »ñÈ¡µ½ÎÒÃÇ¸øµÄ cameraRig ÊµÌå
+      // è·å–åˆ°æˆ‘ä»¬ç»™çš„ cameraRig å®ä½“
       const rig = document.getElementById('cameraRig');
 
-      // ¼àÌıÕû¸ö´°¿ÚµÄÊó±êÒÆ¶¯ÊÂ¼ş
+      // ç›‘å¬æ•´ä¸ªçª—å£çš„é¼ æ ‡ç§»åŠ¨äº‹ä»¶
       window.addEventListener('mousemove', (e) => {
-        // ¼ÆËãÊó±êÏà¶Ô´°¿ÚÖĞĞÄµÄÆ«ÒÆÖµ
+        // è®¡ç®—é¼ æ ‡ç›¸å¯¹çª—å£ä¸­å¿ƒçš„åç§»å€¼
         const halfW = window.innerWidth  / 2;
         const halfH = window.innerHeight / 2;
 
-        // ¸ù¾İÆ«ÒÆÓ³Éäµ½½Ç¶È·¶Î§£¨×óÓÒ ¡À10¡ã£¬ÉÏÏÂ ¡À5¡ã£©
-        const yaw   = ((e.clientX - halfW) / halfW) * 10; // ÈÆ Y Öá£¨Ë®Æ½Ğı×ª£©
-        const pitch = ((e.clientY - halfH) / halfH) * 5;  // ÈÆ X Öá£¨´¹Ö±Ğı×ª£©
+        // æ ¹æ®åç§»æ˜ å°„åˆ°è§’åº¦èŒƒå›´ï¼ˆå·¦å³ Â±10Â°ï¼Œä¸Šä¸‹ Â±5Â°ï¼‰
+        const yaw   = ((e.clientX - halfW) / halfW) * 10; // ç»• Y è½´ï¼ˆæ°´å¹³æ—‹è½¬ï¼‰
+        const pitch = ((e.clientY - halfH) / halfH) * 5;  // ç»• X è½´ï¼ˆå‚ç›´æ—‹è½¬ï¼‰
 
-        // ¸üĞÂ cameraRig µÄĞı×ª½Ç¶È
+        // æ›´æ–° cameraRig çš„æ—‹è½¬è§’åº¦
         rig.setAttribute('rotation', { x: -pitch, y: yaw, z: 0 });
       });
     </script>
