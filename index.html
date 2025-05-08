@@ -44,7 +44,7 @@
       - embedded: 让场景可以嵌入到已有的 HTML 布局中
       - background: 设置 WebGL 清除色为黑色
     -->
-    <a-scene embedded background="color: #000000">
+    <a-scene embedded background="color: #010000">
 
       <!-- 
         5. <a-assets> 用于预加载外部资源，推荐预先加载模型提高体验
@@ -83,7 +83,7 @@
       <a-entity
         gltf-model="#myModel"
         position="0 1.5 -5"
-        scale="3 3 3"
+        scale="10 10 10"
         animation="
           property: position;
           to: 0 2.5 -5;
@@ -97,7 +97,7 @@
         8. 摄像机支架（cameraRig）：
         - 我们把相机挂在这个空实体上，通过调整它的 rotation 来控制视角
       -->
-      <a-entity id="cameraRig" position="0 1.6 5">
+      <a-entity id="cameraRig" position="0 1.6 8">
         <!-- 真正的摄像机 -->
         <a-entity camera></a-entity>
       </a-entity>
