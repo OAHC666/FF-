@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>我的 3D 模型演示（初学者版）</title>
+
+    <!-- 1. 引入 A-Frame 库：这是一个专门用来做网页 3D 场景的 JavaScript 框架 -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+    <style>
+      /* 
+        2. 页面基础样式 
+        - margin: 0      清除浏览器默认的页面边距
+        - overflow: hidden 防止出现滚动条
+        - background-color: #000  将整个页面背景设为纯黑
+      */
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+
+      /* 
+        3. a-scene 样式 
+        - position: fixed   固定在页面最底层
+        - top/left: 0       紧贴浏览器窗口左上角
+        - width/height:100% 占满整个窗口
+        - z-index: -1       放到所有内容的下面，充当背景
+      */
+      a-scene {
+        position: fixed;
+        top: 0; 
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+      4. A-Frame 场景开始
+      - embedded: 让场景可以嵌入到已有的 HTML 布局中
+      - background: 设置 WebGL 清除色为黑色
+    -->
+    <a-scene embedded background="color: #000000">
+
+      <!-- 
+        5. <a-assets> 用于预加载外部资源，推荐预先加载模型提高体验
+      -->
+      <a-assets>
+        <!-- 
+          - id="myModel": 用来在场景中引用这份资源 
+          - src="文件名.glb": 文件名要和你放在同目录下的 .glb 完全一致
+        -->
+        <a-asset-item
+          id="myModel"
+          src="monster.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <!-- 
+        6. 添加光源 
+        - ambient: 环境光，给整个场景一个基础亮度
+        - directional: 定向光，好比太阳光，有方向感，增强阴影效果
+      -->
+      <a-entity light="type: ambient; intensity: 1.0"></a-entity>
+      <a-entity light="type: directional; intensity: 0.8" position="1 2 1"></a-entity>
+
+      <!--
+        7. 把 3D 模型放到场景里，并添加上下往返动画：
+        - gltf-model="#myModel": 引用上面预加载的模型
+        - position="x y z": 模型在 3D 空间中的初始位置
+        - scale="2 2 2": 模型缩放比例，按照需要调整大小
+        - animation: A-Frame 内置组件，用来创建属性动画
+          * property: 要动画的属性（这里是 position）
+          * to: 动画目标值（x y z）
+          * dur: 动画时长，单位毫秒
+          * dir: alternate 表示往返运动
+          * loop: true 无限循环
+      -->
+      <a-entity
+        gltf-model="#myModel"
+        position="0 1.5 -5"
+        scale="1 1 1"
+        animation="
+          property: position;
+          to: 0 2.5 -5;
+          dur: 2000;
+          dir: alternate;
+          loop: true
+        ">
+      </a-entity>
+
+      <!--
+        8. 摄像机支架（cameraRig）：
+        - 我们把相机挂在这个空实体上，通过调整它的 rotation 来控制视角
+      -->
+      <a-entity id="cameraRig" position="0 1.6 3">
+        <!-- 真正的摄像机 -->
+        <a-entity camera></a-entity>
+      </a-entity>
+
+    </a-scene>
+    <!-- A-Frame 场景结束 -->
+
+    <!--
+      9. JavaScript：监听鼠标移动，让摄像机按照鼠标位置“摇摆”
+    -->
+    <script>
+      // 获取到我们给的 cameraRig 实体
+      const rig = document.getElementById('cameraRig');
+
+      // 监听整个窗口的鼠标移动事件
+      window.addEventListener('mousemove', (e) => {
+        // 计算鼠标相对窗口中心的偏移值
+        const halfW = window.innerWidth  / 2;
+        const halfH = window.innerHeight / 2;
+
+        // 根据偏移映射到角度范围（左右 ±10°，上下 ±5°）
+        const yaw   = ((e.clientX - halfW) / halfW) * 10; // 绕 Y 轴（水平旋转）
+        const pitch = ((e.clientY - halfH) / halfH) * 5;  // 绕 X 轴（垂直旋转）
+
+        // 更新 cameraRig 的旋转角度
+        rig.setAttribute('rotation', { x: -pitch, y: yaw, z: 0 });
+      });
+    </script>
+  </body>
+</html>
